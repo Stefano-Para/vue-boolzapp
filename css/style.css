@@ -9,6 +9,7 @@ Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visua
 body {
     background-color: #E4DCD4;
     height: 100vh;
+    font-family: Oxygen;
 }
 header {
     height: 100px;
@@ -26,7 +27,7 @@ main {
     left: 50%;
     transform: translateX(-50%);
     width: 1200px;
-    height: 600px;
+    height: 650px;
     display: flex;
     flex-direction: row;
 }
@@ -45,7 +46,59 @@ main {
     height: 50px;
     background-color: #EAEAEA;
 }
+.hc-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;                   /* IMPORTANTE */
+    font-weight: bold;
+    font-size: 0.8em;
+}
+img {
+    width: 40px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.hc-left ul {
+    flex-grow: 1;
+    text-align: right;
+}
+.hc-left li {
+    display: inline-block;
+}
+.hc-left i {
+    font-size: 1.4em;
+    margin: 0 5px;
+    color: #B1B1B1;
+}
 #notification {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;                   /* IMPORTANTE */
     height: 60px;
     background-color: #8EDAFC;
+    display: flex;
+    flex-direction: row;
 }
+#container_bell {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.fa-bell-slash {
+    color: #8EDAFC;
+    align-self: center;
+}
+#container_testo_notification {
+    font-size: 0.8em;
+}
+#container_testo_notification a {
+    color: grey;
+    font-weight: 200;
+}
+
