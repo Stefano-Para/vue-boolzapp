@@ -28,7 +28,8 @@
                     <!-- header column left con FLEX -->
                     <section class="header-column hc-left">
                         <!-- img & name  -->
-                        <img src="img/avatar_io.jpg" alt=""> <h4>Nome Utente</h4>
+                        <img src="https://movieplayer.net-cdn.it/t/images/2019/01/24/grande-lebowski-super-bowl_jpg_1200x0_crop_q85.jpg" alt="">
+                        <h4>Drugo Lebowski</h4>
                         <!-- 3 icons  -->
                         <ul>
                             <li>
@@ -75,11 +76,11 @@
                     <aside>
 
                         <!-- anteprima chat  -->
-                        <div id="container-anteprima-chat">
+                        <div v-for="(contatto, index) in contacts" id="container-anteprima-chat" >
                             <img src="img/avatar_1.jpg" alt="prima_IMG">
                             <div class="anteprima-testo">
-                                <h3>Michele</h3>
-                                <h6>Tutto fatto!</h6>
+                                <h3>{{ contatto.name }}</h3>
+                                <h6>prova</h6>
                             </div>
                             <p class="anteprima-data">10/01/2020 16:15:22</p>
                         </div>

@@ -59,6 +59,7 @@ main {
 }
 img {
     width: 40px;
+    height: 40px;
     margin-right: 5px;
     border-radius: 50%;
 }
