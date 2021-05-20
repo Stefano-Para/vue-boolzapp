@@ -88,10 +88,19 @@ var app = new Vue ({
                     }
                 ],
             }
-        ]
+        ],
+        activeIndex: 0
         
     },
-    
+    methods: {
+        getImage: function (index) {
+            let imgUrl = this.contacts[index].avatar;
+            return "img/avatar" + imgUrl + ".jpg";
+        },
+        setActive: function (newIndex) {
+            this.activeIndex = newIndex;
+        }
+    }    
 
 })
 

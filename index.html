@@ -74,40 +74,17 @@
 
                     <!-- section aside chats  -->
                     <aside>
-
                         <!-- anteprima chat  -->
-                        <div v-for="(contatto, index) in contacts" id="container-anteprima-chat" >
-                            <img src="img/avatar_1.jpg" alt="prima_IMG">
+                        <div
+                        v-for="(contact, index) in contacts"
+                        id="container-anteprima-chat"
+                        :class="(index == activeIndex) ? 'active' : '' "
+                        @click="setActive(index)"
+                        class="contact">
+                            <img :src="getImage(index)" alt="prima_IMG">
                             <div class="anteprima-testo">
-                                <h3>{{ contatto.name }}</h3>
+                                <h3>{{ contact.name }}</h3>
                                 <h6>prova</h6>
-                            </div>
-                            <p class="anteprima-data">10/01/2020 16:15:22</p>
-                        </div>
-
-                        <div id="container-anteprima-chat">
-                            <img src="img/avatar_2.jpg" alt="prima_IMG">
-                            <div class="anteprima-testo">
-                                <h3>Fabio</h3>
-                                <h6>Mi piacerebbe ma devo andare</h6>
-                            </div>
-                            <p class="anteprima-data">10/01/2020 16:15:22</p>
-                        </div>
-
-                        <div id="container-anteprima-chat">
-                            <img src="img/avatar_3.jpg" alt="prima_IMG">
-                            <div class="anteprima-testo">
-                                <h3>Samuele</h3>
-                                <h6>Ah scusa</h6>
-                            </div>
-                            <p class="anteprima-data">10/01/2020 16:15:22</p>
-                        </div>
-
-                        <div id="container-anteprima-chat">
-                            <img src="img/avatar_4.jpg" alt="prima_IMG">
-                            <div class="anteprima-testo">
-                                <h3>Luisa</h3>
-                                <h6>Si, ma preferirei andare al ci</h6>
                             </div>
                             <p class="anteprima-data">10/01/2020 16:15:22</p>
                         </div>
