@@ -1,6 +1,11 @@
 // Milestone 1:
 // Replica della grafica (immagine in allegato) con la possibilità di avere messaggi scritti dall’utente (verdi) e dall’interlocutore (bianco) assegnando due classi CSS diverse;
 // Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto, ricavandoli dall'array contacts qui allegato
+
+// Milestone 2:
+// Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
+// Click sul contatto mostra la conversazione del contatto cliccato
+
 var app = new Vue ({
     el: '#root',
     data: {
@@ -27,6 +32,7 @@ var app = new Vue ({
                     }
                 ],
             },
+
             {
                 name: 'Fabio',
                 avatar: '_2',
@@ -48,7 +54,8 @@ var app = new Vue ({
                         status: 'sent'
                     }
                 ],
-            },     
+            }, 
+
             {
                 name: 'Samuele',
                 avatar: '_3',
@@ -71,6 +78,7 @@ var app = new Vue ({
                     }
                 ],
             },
+
             {
                 name: 'Luisa',
                 avatar: '_4',
@@ -81,14 +89,35 @@ var app = new Vue ({
                         text: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
                     },
+
                     {
                         date: '10/01/2020 15:50:00',
                         text: 'Si, ma preferirei andare al cinema',
                         status: 'received'
                     }
                 ],
+            },
+
+            {
+                name: 'Scar',
+                avatar: '_9',
+                visible: true,
+                messages: [
+                    {
+                        date: '21/05/2021 17:50:15',
+                        text: 'Stasera vuoi crocchette o qualcosa \'altro?',
+                        status: 'sent'
+                    },
+
+                    {
+                        date: '21/05/2021 17:50:20',
+                        text: 'Bistecca dai.. O una tartar di cerbiatto: decidi tu.',
+                        status: 'received'
+                    }
+                ],
             }
         ],
+        
         activeIndex: 0
         
     },
@@ -99,19 +128,26 @@ var app = new Vue ({
             // è uguale a fare 
             return `img/avatar${imgUrl}.jpg`
         },
+
         setActive: function (newIndex) {
             this.activeIndex = newIndex;
         },
+
         getLastMessageData: function (contactIndex) {
             const lastMessageIndex = this.contacts[contactIndex].messages.length -1;
             return this.contacts[contactIndex].messages[lastMessageIndex].date;
             // questo è l'ultimo oggetto di contacts -> messages -> { date - text - status } da cui prende DATE.
         },
+
         // questa function serve per prendere l'ultimo text (con messages.length - 1)
         getLastMessageText: function (contactIndex) {
-            const lastMessageIndex = this.contacts[contactIndex].messages.length -1;
-            return this.contacts[contactIndex].messages[lastMessageIndex].text.substring(0, 30) + "...";
-        }
+            const lastMessageIndex = this.contacts[contactIndex].messages.length - 1;
+            // cancellare
+            console.log("contact index: " + contactIndex)
+
+            return this.contacts[contactIndex].messages[lastMessageIndex].text.substring(0, 30) + "...";            
+        },
+
     }    
 
 })

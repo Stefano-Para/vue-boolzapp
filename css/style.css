@@ -27,7 +27,7 @@ main {
     top: -70px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1200px;
+    width: 1300px;
     height: 650px;
     display: flex;
     flex-direction: row;
@@ -188,16 +188,19 @@ aside {
 }
 .hc-right h6 {
     font-size: 0.5em;
+    margin-top: 3px;
     color: grey;
 }
 
 /* chat  */
 #chat {
+    min-height: calc(100% - 100px);
+    padding: 30px 60px 15px 60px;
+    overflow-y: scroll;
+}
+.versatile-chat {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-    height: calc(100% - 100px);
-    padding: 30px 60px 15px 60px;
 }
 .msg {
     display: flex;
