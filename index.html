@@ -131,9 +131,11 @@
                     
                     <!-- chat con flex  -->
                     <section id="chat">
+
                         <div class="versatile-chat"
                         v-for="(message, index) in contacts[activeIndex].messages">
-                            <div class="msg sent" 
+
+                            <div class="msg" 
                             :class="message.status">
                                 <h2>{{ message.text }}</h2>
                                 <h6>{{ message.date }}</h6>
