@@ -207,7 +207,7 @@ aside {
     align-items: center;
     flex-direction: row;
     font-size: 0.5em;
-    width: 200px;
+    width: 250px;
     height: 40px;
     padding: 5px 10px;
     border-radius: 8px;
@@ -218,6 +218,8 @@ aside {
 }
 .msg h6 {
     align-self: flex-end;
+    flex-grow: 2;
+    text-align: right;
 }
 .sent {
     background-color: #D5F9BA;

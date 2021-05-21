@@ -106,7 +106,7 @@
                             <!-- v-if v-else per fare vedere data o mai ricevuti? -->
                             
                             <h6>{{ "Ultimo accesso oggi alle" }} {{ getLastMessageData(activeIndex) }}</h6>
-                            <h6>Prova</h6>
+                            <!-- <h6 v-else>Prova</h6> -->
                         </div>
                         <!-- icone header right  -->
                         <ul>
@@ -131,19 +131,21 @@
                     
                     <!-- chat con flex  -->
                     <section id="chat">
-                        <div class="versatile-chat">
-                            <div class="msg sent">
-                                <h2>prova</h2>
-                                <h6>10/01/2020 16:15:22</h6>
+                        <div class="versatile-chat"
+                        v-for="(message, index) in contacts[activeIndex].messages">
+                            <div class="msg sent" 
+                            :class="message.status">
+                                <h2>{{ message.text }}</h2>
+                                <h6>{{ message.date }}</h6>
                             </div>
-                            <div class="msg sent">
+                            <!-- <div class="msg sent">
                                 <h2>prova</h2>
                                 <h6>10/01/2020 16:15:22</h6>
                             </div>
                             <div class="msg received">
                                 <h2>prova</h2>
                                 <h6>10/01/2020 16:15:22</h6>
-                            </div>
+                            </div> -->
                         </div>
                         
 
