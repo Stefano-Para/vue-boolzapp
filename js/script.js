@@ -31,6 +31,38 @@ var app = new Vue ({
                         status: 'received'
                     }
                 ],
+                random: [
+                    {
+                        date: "",
+                        text: "Non sei simpatico e non fai ridere nessuno",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Non credo di aver capito",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Ah ah ah",
+                        status: "received"
+                    }, 
+                    {
+                        date: "",
+                        text: "Eccoci, rientriamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Proviamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Stai giocando a Guitar Hero?",
+                        status: "received"
+                    },
+                ]
             },
 
             {
@@ -54,6 +86,38 @@ var app = new Vue ({
                         status: 'sent'
                     }
                 ],
+                random: [
+                    {
+                        date: "",
+                        text: "Non sei simpatico e non fai ridere nessuno",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Non credo di aver capito",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Ah ah ah",
+                        status: "received"
+                    }, 
+                    {
+                        date: "",
+                        text: "Eccoci, rientriamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Proviamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Stai giocando a Guitar Hero?",
+                        status: "received"
+                    },
+                ]
             }, 
 
             {
@@ -77,6 +141,38 @@ var app = new Vue ({
                         status: 'received'
                     }
                 ],
+                random: [
+                    {
+                        date: "",
+                        text: "Non sei simpatico e non fai ridere nessuno",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Non credo di aver capito",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Ah ah ah",
+                        status: "received"
+                    }, 
+                    {
+                        date: "",
+                        text: "Eccoci, rientriamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Proviamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Stai giocando a Guitar Hero?",
+                        status: "received"
+                    },
+                ]
             },
 
             {
@@ -96,6 +192,38 @@ var app = new Vue ({
                         status: 'received'
                     }
                 ],
+                random: [
+                    {
+                        date: "",
+                        text: "Non sei simpatico e non fai ridere nessuno",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Non credo di aver capito",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Ah ah ah",
+                        status: "received"
+                    }, 
+                    {
+                        date: "",
+                        text: "Eccoci, rientriamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Proviamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Stai giocando a Guitar Hero?",
+                        status: "received"
+                    },
+                ]
             },
 
             {
@@ -115,10 +243,44 @@ var app = new Vue ({
                         status: 'received'
                     }
                 ],
+                random: [
+                    {
+                        date: "",
+                        text: "Non sei simpatico e non fai ridere nessuno",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Non credo di aver capito",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Ah ah ah",
+                        status: "received"
+                    }, 
+                    {
+                        date: "",
+                        text: "Eccoci, rientriamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Proviamo",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Stai giocando a Guitar Hero?",
+                        status: "received"
+                    },
+                ]
             }
         ],
         
-        activeIndex: 0
+        activeIndex: 0,
+        userMessage: "",
+        userData: "",
         
     },
     methods: {
@@ -143,12 +305,47 @@ var app = new Vue ({
         getLastMessageText: function (contactIndex) {
             const lastMessageIndex = this.contacts[contactIndex].messages.length - 1;
             // cancellare
-            console.log("contact index: " + contactIndex)
+            // console.log("contact index: " + contactIndex)
 
             return this.contacts[contactIndex].messages[lastMessageIndex].text.substring(0, 30) + "...";            
         },
+        // data atm
+        sendMessage: function () {
+            //utile per data in e out
+        this.userData = dayjs().format('DD/MM/YY HH:mm:ss'); 
 
-    }    
+            
 
-})
+            // console.log("questa è randomAnswer = " + randomAnswer);
+            // input dell'user in chat
+            if (this.userMessage.length > 0) {
+                this.contacts[this.activeIndex].messages.push(
+                    {
+                    date: this.userData,
+                    text: this.userMessage,
+                    status: 'sent'
+                    }
+                );
+            }
+            // risposta bot
+            this.userMessage = "";         
+        },  // chiusura funzione sendMessage
+        
+        c: function () {
+            // random creator answer
+            const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (5 - 0 + 1)) + 0)].text;
+
+            let x = this.contacts[this.activeIndex].messages.push({date: dayjs().format('DD/MM/YY HH:mm:ss'),text: randomAnswer, status:'received'});
+            return x;
+        },
+        botMessage: function() {
+             let x = this
+            setTimeout(function(){ 
+                x.c();
+            }, 1000);
+        },
+    },
+
+}
+)
 

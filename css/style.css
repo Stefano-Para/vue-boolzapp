@@ -194,7 +194,7 @@ aside {
 
 /* chat  */
 #chat {
-    min-height: calc(100% - 100px);
+    height: calc(100% - 100px);
     padding: 30px 60px 15px 60px;
     overflow-y: scroll;
 }
