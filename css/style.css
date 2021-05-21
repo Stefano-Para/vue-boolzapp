@@ -159,9 +159,9 @@ aside {
     font-weight: 200;
     color: grey;
 }
-.anteprima-testo h6::after {
+/* .anteprima-testo h6::after {
     content: "...";
-}
+} */
 .anteprima-data {
     font-size: 0.5em;
     color: grey;

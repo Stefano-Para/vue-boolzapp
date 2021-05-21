@@ -72,7 +72,7 @@
                         <i class="fas fa-search"></i>
                     </section>
 
-                    <!-- section aside chats  -->
+                    <!-- section aside anteprima chats  -->
                     <aside>
                         <!-- anteprima chat  -->
                         <div
@@ -84,9 +84,9 @@
                             <img :src="getImage(index)" alt="prima_IMG">
                             <div class="anteprima-testo">
                                 <h3>{{ contact.name }}</h3>
-                                <h6>prova</h6>
+                                <h6>{{ getLastMessageText(index) }}</h6>
                             </div>
-                            <p class="anteprima-data">10/01/2020 16:15:22</p>
+                            <p class="anteprima-data">{{ getLastMessageData(index) }}</p>
                         </div>
 
                     </aside> <!-- chiusura anteprima chat  -->

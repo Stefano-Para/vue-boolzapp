@@ -93,12 +93,24 @@ var app = new Vue ({
         
     },
     methods: {
-        getImage: function (index) {
-            let imgUrl = this.contacts[index].avatar;
-            return "img/avatar" + imgUrl + ".jpg";
+        getImage: function (contactIndex) {
+            let imgUrl = this.contacts[contactIndex].avatar;
+            // return "img/avatar" + imgUrl + ".jpg";
+            // è uguale a fare 
+            return `img/avatar${imgUrl}.jpg`
         },
         setActive: function (newIndex) {
             this.activeIndex = newIndex;
+        },
+        getLastMessageData: function (contactIndex) {
+            const lastMessageIndex = this.contacts[contactIndex].messages.length -1;
+            return this.contacts[contactIndex].messages[lastMessageIndex].date;
+            // questo è l'ultimo oggetto di contacts -> messages -> { date - text - status } da cui prende DATE.
+        },
+        // questa function serve per prendere l'ultimo text (con messages.length - 1)
+        getLastMessageText: function (contactIndex) {
+            const lastMessageIndex = this.contacts[contactIndex].messages.length -1;
+            return this.contacts[contactIndex].messages[lastMessageIndex].text.substring(0, 30) + "...";
         }
     }    
 
