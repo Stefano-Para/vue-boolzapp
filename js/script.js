@@ -34,7 +34,7 @@ var app = new Vue ({
                 random: [
                     {
                         date: "",
-                        text: "Non sei simpatico e non fai ridere nessuno",
+                        text: "Hmm non mi fa ridere. Non sei simpatico.",
                         status: "received"
                     },
                     {
@@ -49,19 +49,19 @@ var app = new Vue ({
                     }, 
                     {
                         date: "",
-                        text: "Eccoci, rientriamo",
+                        text: "Aspetta fammi pensare",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Proviamo",
+                        text: "E... e quindi?",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Stai giocando a Guitar Hero?",
+                        text: "Ma ci sarai te!",
                         status: "received"
-                    },
+                    }                   
                 ]
             },
 
@@ -89,7 +89,7 @@ var app = new Vue ({
                 random: [
                     {
                         date: "",
-                        text: "Non sei simpatico e non fai ridere nessuno",
+                        text: "Hmm non mi fa ridere. Non sei simpatico.",
                         status: "received"
                     },
                     {
@@ -104,19 +104,19 @@ var app = new Vue ({
                     }, 
                     {
                         date: "",
-                        text: "Eccoci, rientriamo",
+                        text: "Aspetta fammi pensare",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Proviamo",
+                        text: "E... e quindi?",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Stai giocando a Guitar Hero?",
+                        text: "Ma ci sarai te!",
                         status: "received"
-                    },
+                    }                   
                 ]
             }, 
 
@@ -144,7 +144,7 @@ var app = new Vue ({
                 random: [
                     {
                         date: "",
-                        text: "Non sei simpatico e non fai ridere nessuno",
+                        text: "Hmm non mi fa ridere. Non sei simpatico.",
                         status: "received"
                     },
                     {
@@ -159,19 +159,19 @@ var app = new Vue ({
                     }, 
                     {
                         date: "",
-                        text: "Eccoci, rientriamo",
+                        text: "Aspetta fammi pensare",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Proviamo",
+                        text: "E... e quindi?",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Stai giocando a Guitar Hero?",
+                        text: "Ma ci sarai te!",
                         status: "received"
-                    },
+                    }                   
                 ]
             },
 
@@ -195,7 +195,7 @@ var app = new Vue ({
                 random: [
                     {
                         date: "",
-                        text: "Non sei simpatico e non fai ridere nessuno",
+                        text: "Hmm non mi fa ridere. Non sei simpatico.",
                         status: "received"
                     },
                     {
@@ -210,19 +210,19 @@ var app = new Vue ({
                     }, 
                     {
                         date: "",
-                        text: "Eccoci, rientriamo",
+                        text: "Aspetta fammi pensare",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Proviamo",
+                        text: "E... e quindi?",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Stai giocando a Guitar Hero?",
+                        text: "Ma ci sarai te!",
                         status: "received"
-                    },
+                    }                   
                 ]
             },
 
@@ -246,7 +246,7 @@ var app = new Vue ({
                 random: [
                     {
                         date: "",
-                        text: "Non sei simpatico e non fai ridere nessuno",
+                        text: "Hmm non mi fa ridere. Non sei simpatico.",
                         status: "received"
                     },
                     {
@@ -261,25 +261,51 @@ var app = new Vue ({
                     }, 
                     {
                         date: "",
-                        text: "Eccoci, rientriamo",
+                        text: "Aspetta fammi pensare",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Proviamo",
+                        text: "E... e quindi?",
                         status: "received"
                     },
                     {
                         date: "",
-                        text: "Stai giocando a Guitar Hero?",
+                        text: "ehi, sai che bruce ha appena cacato in bagno?",
                         status: "received"
                     },
+                    {
+                        date: "",
+                        text: "I love you momm-Aileen! 💗",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Steve mi ha appena rubato la cuccia. Fai qualcosa!",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Questo poteva giusto dirlo la Lucilla..😅😍",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "zio Armando!! 😍",
+                        status: "received"
+                    },
+                    {
+                        date: "",
+                        text: "Zia Dali! Ciao JJ 😍;",
+                        status: "received"
+                    },
+                    
                 ]
             }
         ],
         
         activeIndex: 0,
-        userMessage: "",
+        userMessage: null,
         userData: ""
         
     },
@@ -325,14 +351,14 @@ var app = new Vue ({
                     status: 'sent'
                     }
                 );
-            }
+            } 
             // risposta bot
             this.userMessage = "";         
         },  // chiusura funzione sendMessage
         
         botAnswer: function () {
             // random creator answer
-            const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (5 - 0 + 1)) + 0)].text;
+            const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (this.contacts[this.activeIndex].random.length - 0 + 1)) + 0)].text;
 
             let x = this.contacts[this.activeIndex].messages.push({date: dayjs().format('DD/MM/YY HH:mm:ss'),text: randomAnswer, status:'received'});
             return x;
