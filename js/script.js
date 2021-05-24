@@ -286,7 +286,7 @@ var app = new Vue ({
                     },
                     {
                         date: "",
-                        text: "Questo poteva giusto dirlo la Lucilla..😅😍",
+                        text: "'Sta cosa poteva dirla giusto la Lucilla..😅😍",
                         status: "received"
                     },
                     {
