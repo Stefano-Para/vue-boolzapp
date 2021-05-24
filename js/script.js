@@ -280,7 +280,7 @@ var app = new Vue ({
         
         activeIndex: 0,
         userMessage: "",
-        userData: "",
+        userData: ""
         
     },
     methods: {
@@ -309,12 +309,11 @@ var app = new Vue ({
 
             return this.contacts[contactIndex].messages[lastMessageIndex].text.substring(0, 30) + "...";            
         },
+
         // data atm
         sendMessage: function () {
             //utile per data in e out
-        this.userData = dayjs().format('DD/MM/YY HH:mm:ss'); 
-
-            
+        this.userData = dayjs().format('DD/MM/YY HH:mm:ss');
 
             // console.log("questa è randomAnswer = " + randomAnswer);
             // input dell'user in chat
@@ -331,21 +330,32 @@ var app = new Vue ({
             this.userMessage = "";         
         },  // chiusura funzione sendMessage
         
-        c: function () {
+        botAnswer: function () {
             // random creator answer
             const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (5 - 0 + 1)) + 0)].text;
 
             let x = this.contacts[this.activeIndex].messages.push({date: dayjs().format('DD/MM/YY HH:mm:ss'),text: randomAnswer, status:'received'});
             return x;
         },
+
         botMessage: function() {
              let x = this
             setTimeout(function(){ 
-                x.c();
-            }, 1000);
+                x.botAnswer();
+            }, 1500);
         },
+
+        search: function(event) {
+            const searchInput = event.target.value;
+            return this.contacts.map(contact => {
+                if (contact.name.toLowerCase().includes(searchInput.toLowerCase())) {
+                    contact.visible = true;
+                }  else {
+                    contact.visible = false;
+                }
+            })
+        }
     },
 
 }
 )
-

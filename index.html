@@ -67,24 +67,31 @@
                             </a></h5>
                         </div>
                     </section> <!-- chiusura notification  -->
+
+
                     <!-- sezione search chat  -->
                     <section id="container-search">
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text"
+                        placeholder="Cerca o inizia una nuova chat"
+                        @change="search"
+                        >
                         <i class="fas fa-search"></i>
                     </section>
+                    
+                    <!-- { active : index == activeIndex, no_display : contact.visible == false } -->
 
                     <!-- section aside anteprima chats  -->
                     <aside>
                         <!-- anteprima chat  -->
                         <div
                         v-for="(contact, index) in contacts"
-                        id="container-anteprima-chat"
-                        :class="(index == activeIndex) ? 'active' : '' "
+                        class="contact container-anteprima-chat"                        
+                        :class="(contact.visible == false) ? 'no_display' : '' "
                         @click="setActive(index)"
-                        class="contact">
+                        >
                             <img :src="getImage(index)" alt="prima_IMG">
                             <div class="anteprima-testo">
-                                <h3>{{ contact.name }}</h3>
+                                <h3>{{ contact.name }} {{ contact.visible }}</h3>
                                 <h6>{{ getLastMessageText(index) }}</h6>
                             </div>
                             <p class="anteprima-data">{{ getLastMessageData(index) }}</p>
