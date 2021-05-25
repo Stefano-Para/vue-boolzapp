@@ -8,9 +8,9 @@
 
 // qui viene letta da updated UNA SOLA VOLTA, la prima
 // scrollToEnd = () => {    	
-//     const chat = document.getElementById("singoloMessaggio");
+//     const chat = document.getElementById("endOfChat");
 //     chat.scrollIntoView();
-// },
+// };
 
 var app = new Vue ({
     el: '#root',
@@ -313,7 +313,7 @@ var app = new Vue ({
         activeIndex: 0,
         userMessage: null,
         userData: "",
-
+        
         
     },
     methods: {
@@ -347,10 +347,12 @@ var app = new Vue ({
         sendMessage: function () {
             //utile per data in e out
         this.userData = dayjs().format('DD/MM/YY HH:mm:ss');
-
+            
             // console.log("questa è randomAnswer = " + randomAnswer);
             // input dell'user in chat
+            
             if (this.userMessage.length > 0) {
+                
                 this.contacts[this.activeIndex].messages.push(
                     {
                     date: this.userData,
@@ -372,6 +374,11 @@ var app = new Vue ({
             const randomAnswer = singleRandomAnswer[Math.floor((Math.random() * ((singleRandomAnswer.length -1) - 0 + 1)) + 0)].text;
 
             let x = this.contacts[this.activeIndex].messages.push({date: dayjs().format('DD/MM/YY HH:mm:ss'),text: randomAnswer, status:'received'});
+ 
+            // scroll at end
+            // console.log(this.$refs["endOfChat"]);
+            this.$refs["endOfChat"].scrollIntoView();
+
             return x;
         },
 
@@ -392,14 +399,11 @@ var app = new Vue ({
                 }
             })
         },
-        // scrollToEnd = () => {    	
-        //     const chat = document.getElementById("singoloMessaggio");
-        //     chat.scrollIntoView();
-        // },
-        scrollToEnd: function() {
-            const chat = document.getElementById("singoloMessaggio");
-            chat.scrollIntoView();
-       },
+        // qui non funziona lo scrollToEnd (not defined????)
+    //     scrollToEnd: function() {
+    //         const chat = document.getElementById("singoloMessaggio");
+    //         chat.scrollIntoView();
+    //    },
 
         // alternative:
         // search: function (event) {
@@ -414,12 +418,12 @@ var app = new Vue ({
         // }
         
     },
-    updated: function() {
-        scrollToEnd();
-    },
-    // non funziona mounted
-    mounted: function() {
-        scrollToEnd();
-    }
+    // updated: function() {
+    //     scrollToEnd();
+    // },
+    // // non funziona mounted
+    // mounted: function() {
+    //     scrollToEnd();
+    // }
 }
 )
