@@ -6,6 +6,12 @@
 // Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all'interno del pannello della conversazione
 // Click sul contatto mostra la conversazione del contatto cliccato
 
+// qui viene letta da updated UNA SOLA VOLTA, la prima
+// scrollToEnd = () => {    	
+//     const chat = document.getElementById("singoloMessaggio");
+//     chat.scrollIntoView();
+// },
+
 var app = new Vue ({
     el: '#root',
     data: {
@@ -306,7 +312,8 @@ var app = new Vue ({
         
         activeIndex: 0,
         userMessage: null,
-        userData: ""
+        userData: "",
+
         
     },
     methods: {
@@ -352,13 +359,17 @@ var app = new Vue ({
                     }
                 );
             } 
+            
             // risposta bot
             this.userMessage = "";         
         },  // chiusura funzione sendMessage
         
         botAnswer: function () {
-            // random creator answer
-            const randomAnswer = this.contacts[this.activeIndex].random[Math.floor((Math.random() * (this.contacts[this.activeIndex].random.length - 0 + 1)) + 0)].text;
+            // random creator answer  
+            
+            const singleRandomAnswer = this.contacts[this.activeIndex].random;
+
+            const randomAnswer = singleRandomAnswer[Math.floor((Math.random() * ((singleRandomAnswer.length -1) - 0 + 1)) + 0)].text;
 
             let x = this.contacts[this.activeIndex].messages.push({date: dayjs().format('DD/MM/YY HH:mm:ss'),text: randomAnswer, status:'received'});
             return x;
@@ -368,7 +379,7 @@ var app = new Vue ({
              let x = this
             setTimeout(function(){ 
                 x.botAnswer();
-            }, 1500);
+            }, 1000);
         },
 
         search: function(event) {
@@ -380,8 +391,35 @@ var app = new Vue ({
                     contact.visible = false;
                 }
             })
-        }
-    },
+        },
+        // scrollToEnd = () => {    	
+        //     const chat = document.getElementById("singoloMessaggio");
+        //     chat.scrollIntoView();
+        // },
+        scrollToEnd: function() {
+            const chat = document.getElementById("singoloMessaggio");
+            chat.scrollIntoView();
+       },
 
+        // alternative:
+        // search: function (event) {
+        //     for (var i = 0; i < this.contacts.length; i++){
+        //         let included == this.contacts[i].name.toLowerCase().startsWith(event.target.value.toLowerCase());
+        //         if (included == true) {
+        //             this.contacts[i].visible = true;
+        //         } else {
+        //             this.contacts[i].visible = false;
+        //         }
+        //     }
+        // }
+        
+    },
+    updated: function() {
+        scrollToEnd();
+    },
+    // non funziona mounted
+    mounted: function() {
+        scrollToEnd();
+    }
 }
 )

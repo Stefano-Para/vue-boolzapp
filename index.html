@@ -78,7 +78,7 @@
                         <i class="fas fa-search"></i>
                     </section>
                     
-                    <!-- { active : index == activeIndex, no_display : contact.visible == false } -->
+                    
 
                     <!-- section aside anteprima chats  -->
                     <aside>
@@ -86,7 +86,7 @@
                         <div
                         v-for="(contact, index) in contacts"
                         class="contact container-anteprima-chat"                        
-                        :class="(contact.visible == false) ? 'no_display' : '' "
+                        :class="{ active : index == activeIndex, no_display : contact.visible == false }"
                         @click="setActive(index)"
                         >
                             <img :src="getImage(index)" alt="prima_IMG">
@@ -141,15 +141,14 @@
                     
                     <!-- chat con flex  -->
                     <section id="chat">
-
                         <div class="versatile-chat"
                         v-for="(message, index) in contacts[activeIndex].messages">
 
-                            <div class="msg" 
+                            <div id="singoloMessaggio" class="msg" 
                             :class="message.status">
                                 <h2>{{ message.text }}</h2>
                                 <h6>{{ message.date }}</h6>
-                            </div>                            
+                            </div>
                         </div>
                         
 
@@ -160,10 +159,10 @@
                         <i class="far fa-smile"></i>
                         <input
                         v-model="userMessage"
-                        type="text" placeholder="Scrivi un messaggio"
+                        type="text"
+                        placeholder="Scrivi un messaggio"
                         @keydown.enter="sendMessage"
-                        @keyup.enter="botMessage"
-                        > 
+                        @keyup.enter="botMessage"> 
                         <i class="fas fa-microphone"></i>
                     </footer>
                 </div>
