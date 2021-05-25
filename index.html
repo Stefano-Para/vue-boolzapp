@@ -145,13 +145,14 @@
                         v-for="(message, index) in contacts[activeIndex].messages">
 
                             <div id="singoloMessaggio" class="msg" 
-                            :class="message.status">
+                            :class="message.status" ref="msn-1">
                                 <h2>{{ message.text }}</h2>
                                 <h6>{{ message.date }}</h6>
                             </div>
                         </div>
                         
-
+                        <!-- necessario per scroll bottom  -->
+                        <div style="margin-bottom: 35px;" id="endOfChat" ref="endOfChat"></div>
                     </section>  <!-- chiusura chat  -->
                     
 
