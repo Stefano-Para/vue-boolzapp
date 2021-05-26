@@ -355,9 +355,9 @@ var app = new Vue ({
                 
                 this.contacts[this.activeIndex].messages.push(
                     {
-                    date: this.userData,
-                    text: this.userMessage,
-                    status: 'sent'
+                        date: this.userData,
+                        text: this.userMessage,
+                        status: 'sent'
                     }
                 );
             } 

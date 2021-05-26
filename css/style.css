@@ -207,6 +207,9 @@ aside {
     display: flex;
     flex-direction: column;
 }
+
+/* todo: rivedere la grafica altrimenti Andrea rompe! */
+
 .msg {
     display: flex;
     align-items: center;
